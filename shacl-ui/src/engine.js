@@ -3,6 +3,27 @@ import { RdfStore } from 'rdf-stores';
 
 const { QueryEngine } = window.ComunicaShacl || {};
 
+let _worker = null;
+function getWorker() {
+  if (!_worker) _worker = new Worker('worker.js');
+  return _worker;
+}
+
+/**
+ * Run SHACL query in a Web Worker — keeps UI responsive for large examples.
+ */
+export function runInWorker({ shaclQuery, turtleData }) {
+  return new Promise((resolve, reject) => {
+    const worker = getWorker();
+    worker.onmessage = (e) => {
+      if (e.data.type === 'result') resolve(e.data);
+      else if (e.data.type === 'error') reject(new Error(e.data.error));
+    };
+    worker.onerror = (e) => reject(new Error(e.message));
+    worker.postMessage({ shaclQuery, turtleData });
+  });
+}
+
 function extractPrefixLines(shaclQuery) {
   return shaclQuery.split('\n').filter(line => /^\s*PREFIX\s+/i.test(line)).join('\n');
 }
@@ -23,6 +44,7 @@ export function parseRules(shaclQuery) { return []; }
 
 export async function runShaclQuery({ shaclQuery, turtleData }, onQuad) {
   if (!QueryEngine) throw new Error('Engine bundle not loaded. Ensure engine-browser.js is loaded before app.bundle.js.');
+  await new Promise(r => setTimeout(r, 0)); // yield to let DOM paint before heavy engine init
   const engine = new QueryEngine();
   const store = RdfStore.createDefault();
   if (turtleData && turtleData.trim()) {
@@ -82,5 +104,5 @@ export async function explainTriple(shaclQuery, triple) {
 }
 
 if (typeof window !== 'undefined') {
-  window.ShaclEngine = { runShaclQuery, explainTriple, parseRules };
+  window.ShaclEngine = { runShaclQuery, runInWorker, explainTriple, parseRules };
 }

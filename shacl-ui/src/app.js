@@ -59,7 +59,10 @@ createApp({
 
     const exampleStatusText = computed(() => {
       const s = exampleStats.value;
-      if (exampleRunning.value) return 'Running...';
+      if (exampleRunning.value) {
+        const current = exampleResults.value.find(e => e.status === 'running');
+        return 'Running: ' + (current ? current.name : '...');
+      }
       return s.passed + '/' + s.total + ' passed' + (s.failed > 0 ? ', ' + s.failed + ' failed' : '') + (s.errors > 0 ? ', ' + s.errors + ' errors' : '');
     });
 
@@ -98,19 +101,21 @@ createApp({
     }
 
     async function runExample(ex) {
+      const idx = exampleResults.value.indexOf(ex);
+      if (idx === -1) return;
       ex.status = 'running';
-      exampleResults.value = [...exampleResults.value];
+      exampleResults.value[idx] = { ...ex };
+      exampleResults.value = [...exampleResults.value]; // trigger once
       const t0 = performance.now();
       try {
         const resp = await fetch(`examples/${ex.file}`);
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         const src = await resp.text();
-        const results = [];
-        await window.ShaclEngine.runShaclQuery({ shaclQuery: src, turtleData: '' }, q => results.push(q));
-        const ms = Math.round(performance.now() - t0);
-        const goldenMatch = ex.goldenCount >= 0 ? results.length === ex.goldenCount : null;
+        const { count, ms: workerMs } = await window.ShaclEngine.runInWorker({ shaclQuery: src, turtleData: '' });
+        const ms = workerMs || Math.round(performance.now() - t0);
+        const goldenMatch = ex.goldenCount >= 0 ? count === ex.goldenCount : null;
         ex.status = ex.expectedError ? 'pass' : (goldenMatch === true ? 'pass' : 'fail');
-        ex.count = results.length;
+        ex.count = count;
         ex.ms = ms;
         ex.error = null;
       } catch (e) {
@@ -119,14 +124,16 @@ createApp({
         ex.ms = Math.round(performance.now() - t0);
         ex.error = e.message;
       }
-      exampleResults.value = [...exampleResults.value];
+      exampleResults.value[idx] = { ...ex };
     }
 
     async function runAllExamples() {
       exampleRunning.value = true;
+      await nextTick();  // let DOM paint before blocking
+      await new Promise(r => setTimeout(r, 100));
       for (const ex of exampleResults.value) {
-        ex._t0 = performance.now();
         await runExample(ex);
+        await new Promise(r => setTimeout(r, 50));
       }
       exampleRunning.value = false;
     }
@@ -391,25 +398,37 @@ createApp({
       provenance.value = null;
       statusText.value = 'Running…';
       statusClass.value = 'running';
+      await nextTick();  // let DOM paint before engine blocks
       const t0 = performance.now();
+      const MAX_DISPLAY = 2000;
+      let totalCount = 0;
 
       try {
         await window.ShaclEngine.runShaclQuery(
           { shaclQuery: shaclQuery.value.trim(), turtleData: turtleData.value },
-          async (quad) => {
-            rows.value.push(quad);
-            await nextTick();
-            if (scroll.value) scroll.value.scrollTop = scroll.value.scrollHeight;
+          (quad) => {
+            totalCount++;
+            if (rows.value.length < MAX_DISPLAY) {
+              rows.value.push(quad);
+            }
           }
         );
 
+        await nextTick();
+
         const errCount = rows.value.filter(r => r.error).length;
-        const good = rows.value.length - errCount;
+        const good = totalCount - errCount;
         execTime.value = Math.round(performance.now() - t0);
-        statusText.value  = errCount > 0
-          ? `Done with errors — ${good} triple${good !== 1 ? 's' : ''} inferred`
-          : `Done — ${good} triple${good !== 1 ? 's' : ''} inferred`;
-        statusClass.value = errCount > 0 ? 'error' : 'done';
+        if (errCount > 0) {
+          statusText.value = `Done with errors — ${good} triple${good !== 1 ? 's' : ''} inferred`;
+          statusClass.value = 'error';
+        } else if (totalCount > MAX_DISPLAY) {
+          statusText.value = `Done — ${good} triples inferred (showing first ${MAX_DISPLAY})`;
+          statusClass.value = 'done';
+        } else {
+          statusText.value = `Done — ${good} triple${good !== 1 ? 's' : ''} inferred`;
+          statusClass.value = 'done';
+        }
       } catch (err) {
         statusText.value = 'Inference failed: ' + err.message;
         statusClass.value = 'error';
