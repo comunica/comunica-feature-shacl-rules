@@ -1,0 +1,6 @@
+:ab :best true .
+:abc :best true .
+:abcd :best true .
+:abd :dominated true .
+:ac :dominated true .
+:acd :dominated true .

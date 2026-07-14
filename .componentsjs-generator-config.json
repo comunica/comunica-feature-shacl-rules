@@ -1,0 +1,9 @@
+{
+  "source": "lib",
+  "ignorePackagePaths": [
+    "engines/query-shacl-rule",
+    "packages/shacl-rule-1-2-parser"
+  ],
+  "ignoreComponents": [],
+  "modulePrefix": {}
+}

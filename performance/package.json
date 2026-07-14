@@ -1,0 +1,9 @@
+{
+  "name": "benchmark-shacl-rule",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@comunica/query-shacl-rule": "^1.0.0",
+    "rdf-stores": "^2.0.0"
+  }
+}

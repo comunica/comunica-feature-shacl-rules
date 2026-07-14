@@ -1,0 +1,292 @@
+[
+  {
+    "file": "alignment-demo.srl",
+    "count": 32,
+    "error": null
+  },
+  {
+    "file": "annotation-evidence.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "assignment.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "backward-recursion.srl",
+    "count": 9,
+    "error": null
+  },
+  {
+    "file": "backward.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "base-and-literals.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "bayes-diagnosis.srl",
+    "count": 9,
+    "error": null
+  },
+  {
+    "file": "bmi.srl",
+    "count": 14,
+    "error": null
+  },
+  {
+    "file": "builtin-call-complete.srl",
+    "count": 40,
+    "error": null
+  },
+  {
+    "file": "cat-koko.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "collection-nesting.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "collection.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "collections-and-blank-nodes.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "declarations.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "deep-taxonomy-10.srl",
+    "count": 39,
+    "error": null
+  },
+  {
+    "file": "deep-taxonomy-100.srl",
+    "count": 309,
+    "error": null
+  },
+  {
+    "file": "deep-taxonomy-1000.srl",
+    "count": 3009,
+    "error": null
+  },
+  {
+    "file": "deep-taxonomy-10000.srl",
+    "count": 30009,
+    "error": null
+  },
+  {
+    "file": "deep-taxonomy-100000.srl",
+    "count": 300009,
+    "error": null
+  },
+  {
+    "file": "dijkstra.srl",
+    "count": 14,
+    "error": null
+  },
+  {
+    "file": "dog-license.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "equals-same-as.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "family-cousins.srl",
+    "count": 25,
+    "error": null
+  },
+  {
+    "file": "family.srl",
+    "count": 7,
+    "error": null
+  },
+  {
+    "file": "fft32-numeric.srl",
+    "count": 217,
+    "error": null
+  },
+  {
+    "file": "fibonacci.srl",
+    "count": 60,
+    "error": null
+  },
+  {
+    "file": "filter-function-and-langdir.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "good-cobbler.srl",
+    "count": -1,
+    "error": "collection pattern: blank node mismatch"
+  },
+  {
+    "file": "gps.srl",
+    "count": 86,
+    "error": null
+  },
+  {
+    "file": "graph-term-emulation.srl",
+    "count": 11,
+    "error": null
+  },
+  {
+    "file": "hanoi.srl",
+    "count": -1,
+    "error": null
+  },
+  {
+    "file": "if-then.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "import-lib.srl",
+    "count": 0,
+    "error": null
+  },
+  {
+    "file": "import-main.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "negation.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "now-and-language-builtins.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "odrl-dpv-risk-ranked.srl",
+    "count": 125,
+    "error": null
+  },
+  {
+    "file": "path-discovery.srl",
+    "count": -1,
+    "error": null
+  },
+  {
+    "file": "property-paths.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "query.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "rdf-messages.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "reification-and-annotations.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "reifiers.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "spec-2-1-basic-usage.srl",
+    "count": 3,
+    "error": null
+  },
+  {
+    "file": "spec-2-1-descended-from.srl",
+    "count": 6,
+    "error": null
+  },
+  {
+    "file": "spec-2-2-recursion.srl",
+    "count": 7,
+    "error": null
+  },
+  {
+    "file": "spec-2-3-filtering.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "spec-2-4-negation.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "spec-2-5-assignment-with-negation.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "spec-2-5-assignment.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "spec-4-1-srl-syntax.srl",
+    "count": 1,
+    "error": null
+  },
+  {
+    "file": "spec-builtins.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "stratified-negation.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "sudoku.srl",
+    "count": -1,
+    "error": "function evaluator not configured for math ops"
+  },
+  {
+    "file": "turing.srl",
+    "count": 500,
+    "error": null
+  },
+  {
+    "file": "turtle-shortcuts.srl",
+    "count": 4,
+    "error": null
+  },
+  {
+    "file": "unicode-and-signed-numbers.srl",
+    "count": 2,
+    "error": null
+  },
+  {
+    "file": "version-and-in.srl",
+    "count": 3,
+    "error": null
+  }
+]

@@ -1,0 +1,5 @@
+:AllergicRhinitis :rank "low" .
+:BacterialPneumonia :rank "low" .
+:COVID19 :rank "high" .
+:COVID19 :screenedIn true .
+:Influenza :rank "low" .

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHACL Rule Inference – Comunica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app" v-cloak>
+  <div class="page">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="accent"></div>
+      <h1>SHACL Rules Inference</h1>
+      <p class="sub">Powered by Comunica · runs entirely in your browser · no server required</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn" :class="{ active: activeTab === 'editor' }" @click="activeTab = 'editor'">✏️ Editor</button>
+      <button class="tab-btn" :class="{ active: activeTab === 'examples' }" @click="activeTab = 'examples'; loadExamplesDashboard()">📋 Examples (62 tests)</button>
+    </div>
+
+    <!-- Editor panel -->
+    <div class="panel panel-top" v-if="activeTab === 'editor'">
+      <div class="panel-header">
+        <span class="panel-title">SHACL Query <span style="font-weight:400;opacity:.6;text-transform:none">(rules + inline DATA block)</span></span>
+        <div style="display:flex;align-items:center;gap:.5rem">
+          <div class="dropdown" ref="examplesBtn">
+            <button class="btn-examples" @click="toggleExamples">📋 Examples ▾</button>
+            <div class="dropdown-menu" v-if="showExamples">
+              <div v-for="ex in examples" :key="ex.file" class="dropdown-item" @click="loadExample(ex)">{{ ex.name }}</div>
+              <div v-if="examples.length === 0" class="dropdown-empty">No examples found</div>
+            </div>
+          </div>
+          <span class="lang-tag">SHACL</span>
+        </div>
+      </div>
+      <textarea v-model="shaclQuery" spellcheck="false" :style="{ height: editorHeight + 'px' }"></textarea>
+    </div>
+
+    <!-- Editor resize handle -->
+    <div class="resize-handle" v-show="activeTab === 'editor'" :class="{ dragging: draggingEditor }" @mousedown="startResizeEditor" title="Drag to resize editor">
+      <div class="resize-handle-bar"></div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls" v-show="activeTab === 'editor'">
+      <button class="btn-run" :disabled="running" @click="runQuery">
+        <span>{{ running ? '⏳' : '▶' }}</span>
+        {{ running ? 'Running…' : 'Run' }}
+      </button>
+      <button class="btn-clear" @click="clearResults">Clear</button>
+      <span class="status" :class="statusClass">{{ statusText }}</span>
+      <span class="exec-time" v-if="execTime !== null">⏱ {{ execTime }} ms</span>
+      <div class="controls-right">
+        <button class="btn-upload" @click="triggerFileUpload">📂 Upload .ttl</button>
+        <input type="file" ref="fileInput" accept=".ttl,.n3,.nt,.turtle" style="display:none" @change="handleFileUpload" />
+        <button class="btn-help" @click="showModal('how')">📖 How to use</button>
+        <button class="btn-help" @click="showModal('grammar')">📐 Grammar</button>
+      </div>
+    </div>
+
+    <!-- Results resize handle -->
+    <div class="resize-handle" v-show="activeTab === 'editor'" :class="{ dragging: draggingResults }" @mousedown="startResizeResults" title="Drag to resize results">
+      <div class="resize-handle-bar"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-panel panel panel-bottom" v-show="activeTab === 'editor'" :style="{ height: resultsHeight + 'px' }">
+      <div class="panel-header">
+        Results
+        <div style="display:flex;align-items:center;gap:.5rem">
+          <button class="btn-download" v-if="goodRows > 0" @click="downloadTurtle" title="Download inferred triples as Turtle">⬇ Download .ttl</button>
+          <span class="lang-tag">{{ goodRows }} triple{{ goodRows !== 1 ? 's' : '' }}</span>
+        </div>
+      </div>
+      <div class="results-scroll" ref="scroll">
+        <div v-if="rows.length === 0" class="empty-state">
+          {{ neverRan ? 'Run a query to see inferred triples here.' : 'No triples inferred.' }}
+        </div>
+        <table v-else>
+          <thead><tr><th>Subject</th><th>Predicate</th><th>Object</th><th>Graph</th></tr></thead>
+          <tbody>
+            <tr v-for="(row, i) in rows" :key="i" :class="{ 'error-row': row.error, 'data-row': !row.error }" @click="clickRow(row)" :title="row.error ? '' : 'Click to see provenance'">
+              <template v-if="row.error">
+                <td colspan="4">Error: {{ row.error }}</td>
+              </template>
+              <template v-else>
+                <td v-html="fmt(row.subject)"></td>
+                <td v-html="fmt(row.predicate)"></td>
+                <td v-html="fmt(row.object)"></td>
+                <td v-html="fmt(row.graph)"></td>
+              </template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /.page -->
+
+  <!-- Examples dashboard -->
+  <div class="examples-dash" v-if="activeTab === 'examples'">
+    <div class="panel panel-top" style="flex:1;min-height:0">
+      <div class="panel-header">
+        <span class="panel-title">Examples Dashboard</span>
+        <div style="display:flex;align-items:center;gap:.5rem">
+          <button class="btn-run" :disabled="exampleRunning" @click="runAllExamples">{{ exampleRunning ? '⏳ Running…' : '▶ Run All' }}</button>
+          <span class="status" :class="exampleStatusClass">{{ exampleStatusText }}</span>
+        </div>
+      </div>
+      <div class="results-scroll" :style="{ flex: 1, minHeight: 0 }">
+        <table>
+          <thead><tr><th>Example</th><th style="width:80px">Status</th><th style="width:70px">Triples</th><th style="width:80px">Time</th><th style="width:70px"></th></tr></thead>
+          <tbody>
+             <tr v-for="ex in exampleResults" :key="ex.file" :class="{ 'ex-pass': ex.status === 'pass', 'ex-fail': ex.status === 'fail', 'ex-err': ex.status === 'error', 'ex-run': ex.status === 'running' }" @click="openExampleInEditor(ex)" style="cursor:pointer" :title="'Click to open ' + ex.file + ' in editor'">
+               <td><div class="ex-name">{{ ex.name }}</div><div class="ex-file">{{ ex.file }}</div><div class="ex-issue" v-if="ex.issue && (ex.status === 'fail' || ex.status === 'error')">{{ ex.issue }}</div></td>
+              <td>
+                <span v-if="ex.status === 'pass'" class="badge badge-pass">✓ PASS</span>
+                <span v-else-if="ex.status === 'fail'" class="badge badge-fail">✗ FAIL</span>
+                <span v-else-if="ex.status === 'error'" class="badge badge-err">✗ ERR</span>
+                <span v-else class="badge">⏳</span>
+              </td>
+              <td>{{ ex.count >= 0 ? ex.count : '' }}</td>
+              <td>{{ ex.ms >= 0 ? ex.ms + ' ms' : '' }}</td>
+              <td><button class="btn-examples btn-small" :disabled="ex.status === 'running'" @click="runExample(ex)">↻</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help modal -->
+  <div class="modal-backdrop" v-if="modal" @click.self="modal=null">
+    <div class="modal">
+      <div class="modal-header">
+        <span>{{ modal === 'grammar' ? '📐 SHACL Rule Grammar' : '📖 How to use this UI' }}</span>
+        <button class="modal-close" @click="modal=null">✕</button>
+      </div>
+      <div class="modal-body">
+        <template v-if="modal === 'grammar'">
+          <p>A SHACL Rules query consists of optional <strong>PREFIX</strong> declarations, an optional <strong>DATA</strong> block, and one or more <strong>RULE</strong> clauses.</p>
+          <pre>PREFIX prefix: &lt;uri&gt;
+
+DATA {
+  # inline background triples (Turtle syntax)
+  ex:Alice ex:age 30 .
+}
+
+RULE { &lt;head triple pattern&gt; }
+WHERE {
+  # SPARQL graph pattern
+}</pre>
+          <h4>Fixpoint semantics</h4>
+          <p>Rules are applied repeatedly until no new triples are inferred. This means transitive rules work automatically:</p>
+          <pre>RULE { ?a ex:ancestor ?c }
+WHERE {
+  ?a ex:parent ?b .
+  ?b ex:ancestor ?c .
+}</pre>
+          <h4>Multiple rules</h4>
+          <p>You can write several RULE blocks in one query. They all share the same store and are iterated together.</p>
+          <pre>RULE { ?p ex:isAdult true }
+WHERE { ?p ex:age ?a . FILTER(?a >= 18) }
+
+RULE { ?p ex:isMinor true }
+WHERE { ?p ex:age ?a . FILTER(?a &lt; 18) }</pre>
+          <h4>FILTER, OPTIONAL, BIND</h4>
+          <p>The WHERE clause is a full SPARQL 1.2 graph pattern — you can use <code>FILTER</code>, <code>OPTIONAL</code>, <code>BIND</code>, <code>VALUES</code>, sub-queries, etc.</p>
+        </template>
+        <template v-if="modal === 'how'">
+          <h4>1 — Write your SHACL Rules query</h4>
+          <p>Use the editor. Start with PREFIX declarations, optionally add a DATA block with background triples, then write one or more RULE … WHERE … blocks.</p>
+          <h4>2 — Add background data</h4>
+          <p>Type Turtle triples directly inside the <code>DATA { }</code> block in the editor, <em>or</em> click <strong>📂 Upload .ttl</strong> to load a file — its triples will be inserted into the DATA block automatically.</p>
+          <h4>3 — Run</h4>
+          <p>Click <strong>▶ Run</strong>. The engine runs the fixpoint reasoning loop entirely in your browser. Inferred triples appear in the results table.</p>
+          <h4>4 — Inspect results</h4>
+          <p>Each row is one inferred quad. Click any row to see <strong>provenance</strong> — which rule produced it and what data bindings were used.</p>
+          <h4>Tips</h4>
+          <ul>
+            <li>The engine runs entirely client-side — no server required.</li>
+            <li>Share your query via URL — the editor content is encoded in the address bar.</li>
+            <li>Use <strong>📋 Examples</strong> to load built-in example queries.</li>
+          </ul>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  <!-- Provenance modal -->
+  <div class="modal-backdrop" v-if="provenance" @click.self="provenance=null">
+    <div class="modal">
+      <div class="modal-header">
+        <span>🔍 Provenance</span>
+        <button class="modal-close" @click="provenance=null">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="prov-triple">
+          <span class="prov-label">Triple</span>
+          <code>{{ provenance.triple.subject }} · {{ provenance.triple.predicate }} · {{ provenance.triple.object }}</code>
+        </div>
+        <div v-if="provenance.loading" class="prov-loading">⏳ Looking up provenance…</div>
+        <div v-else-if="provenance.error" class="prov-error">Error: {{ provenance.error }}</div>
+        <div v-else-if="provenance.results.length === 0" class="prov-empty">No matching rule found for this triple.</div>
+        <div v-else v-for="(res, ri) in provenance.results" :key="ri" class="prov-rule-block">
+          <div class="prov-rule-title">Rule {{ ri + 1 }}</div>
+          <pre class="prov-rule-code">{{ res.rule.text }}</pre>
+          <div v-if="res.error" class="prov-error">Could not evaluate: {{ res.error }}</div>
+          <div v-else-if="res.bindingRows.length === 0" class="prov-empty">No supporting data bindings found.</div>
+          <div v-else>
+            <div class="prov-bindings-title">Supporting data ({{ res.bindingRows.length }} binding{{ res.bindingRows.length !== 1 ? 's' : '' }})</div>
+            <table class="prov-table">
+              <thead>
+                <tr><th v-for="col in Object.keys(res.bindingRows[0])" :key="col">?{{ col }}</th></tr>
+              </thead>
+              <tbody>
+                <tr v-for="(brow, bi) in res.bindingRows" :key="bi">
+                  <td v-for="col in Object.keys(res.bindingRows[0])" :key="col" v-html="fmt(brow[col])"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#app -->
+
+<script src="engine-browser.js"></script>
+<script type="module" src="app.bundle.js"></script>
+</body>
+</html>
+

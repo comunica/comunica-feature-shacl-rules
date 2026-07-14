@@ -1,0 +1,14 @@
+PREFIX : <http://example.org/>
+
+DATA {
+  :ind a :N0 .
+}
+
+RULE { ?X a :N1 . }
+WHERE { ?X a :N0 . }
+
+RULE { ?X a :N2 . }
+WHERE { ?X a :N1 . }
+
+RULE { ?X a :N3 . }
+WHERE { ?X a :N2 . }

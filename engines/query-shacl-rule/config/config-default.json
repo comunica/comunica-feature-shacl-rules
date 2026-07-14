@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/config-query-sparql/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/runner/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-query-parse-shacl-rule/^1.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-query-operation-shacl-rule/^1.0.0/components/context.jsonld"
+  ],
+  "import": [
+    "ccqs:config/config-default-v5-1-3.json"
+  ],
+  "@id": "urn:comunica:default:Runner",
+  "@type": "Runner",
+  "actors": [
+    {
+      "@id": "urn:comunica:default:query-parse/actors#shacl-rule",
+      "@type": "ActorQueryParseShaclRule"
+    },
+    {
+      "@id": "urn:comunica:default:query-operation/actors#shacl-rule",
+      "@type": "ActorQueryOperationShaclRule",
+      "mediatorQueryOperation": {
+        "@id": "urn:comunica:default:query-operation/mediators#main"
+      },
+      "mediatorUpdateQuads": {
+        "@id": "urn:comunica:default:rdf-update-quads/mediators#main"
+      }
+    }
+  ]
+}

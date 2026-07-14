@@ -1,0 +1,8 @@
+PREFIX : <http://ex/>
+
+DATA {
+  :alice :tags ( :good :Cobbler ) .
+}
+
+RULE { :alice :skill ?trade }
+WHERE { :alice :tags ( :good ?trade ) }

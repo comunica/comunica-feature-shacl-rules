@@ -1,0 +1,35 @@
+{
+  "name": "@comunica/shacl-rule-1-2-parser",
+  "version": "1.0.0",
+  "description": "A Chevrotain-based SHACL Rules syntax parser with Traqula SPARQL algebra conversion",
+  "lsd:module": true,
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib/**/*.d.ts",
+    "lib/**/*.js",
+    "lib/**/*.js.map"
+  ],
+  "scripts": {
+    "build": "yarn run build:ts && yarn run build:components",
+    "build:ts": "tsc",
+    "build:components": "componentsjs-generator"
+  },
+  "dependencies": {
+    "@rdfjs/types": "^2.0.1",
+    "@traqula/algebra-sparql-1-2": "^1.1.0",
+    "@traqula/algebra-transformations-1-1": "^1.1.0",
+    "@traqula/algebra-transformations-1-2": "^1.1.0",
+    "@traqula/chevrotain": "^1.1.0",
+    "@traqula/core": "^1.1.0",
+    "@traqula/parser-sparql-1-2": "^1.1.0",
+    "@traqula/rules-sparql-1-1": "^1.1.0",
+    "@traqula/rules-sparql-1-2": "^1.1.0",
+    "rdf-data-factory": "^2.0.2"
+  }
+}

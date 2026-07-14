@@ -1,0 +1,29 @@
+PREFIX : <http://example/>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+
+# Deep Taxonomy - depth 10 - SRL conversion
+# Source default prefix was written as "@prefix : ."; this file uses http://example/.
+
+DATA {
+  :ind a :N0 .
+}
+
+RULE { :test :is true . }
+WHERE {
+  :ind a :A2 .
+}
+
+RULE {
+  ?X a :N10 .
+  ?X a :I10 .
+  ?X a :J10 .
+}
+WHERE {
+  ?X a :N0 .
+}
+
+RULE { ?X a :A2 . }
+WHERE {
+  ?X a :N10 .
+}
+
