@@ -9,18 +9,19 @@
  *   node performance/validate-examples.mjs --verbose
  */
 
-import { createRequire } from 'module';
-import { readFileSync, readdirSync, existsSync } from 'fs';
-import { join, dirname, extname, basename } from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
-import { performance } from 'perf_hooks';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { join, dirname, extname, basename } from 'node:path';
+import { performance } from 'node:perf_hooks';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
 const { QueryEngine } = require('@comunica/query-shacl-rule');
-const { RdfStore } = require('rdf-stores');
 const N3 = require('n3');
+const { RdfStore } = require('rdf-stores');
+
 const { DataFactory: DF } = N3;
 
 const examplesDir = join(__dirname, 'examples');
@@ -43,8 +44,10 @@ const KNOWN_PREFIXES = {
 
 function extractPrefixes(src) {
   const prefixes = {};
-  const baseMatch = src.match(/^BASE\s+<([^>]+)>/mi);
-  if (baseMatch) prefixes[''] = baseMatch[1];
+  const baseMatch = src.match(/^base\s+<([^>]+)>/im);
+  if (baseMatch) {
+    prefixes[''] = baseMatch[1];
+  }
   for (const m of src.matchAll(/^PREFIX\s+(\S*?):?\s*<([^>]+)>/gm)) {
     prefixes[m[1] || ''] = m[2];
   }
@@ -53,7 +56,7 @@ function extractPrefixes(src) {
 
 function parseGoldenText(text, allPrefixes) {
   const lines = [];
-  for (const [pref, iri] of Object.entries(allPrefixes)) {
+  for (const [ pref, iri ] of Object.entries(allPrefixes)) {
     lines.push(`@prefix ${pref}: <${iri}> .`);
   }
   lines.push('');
@@ -69,10 +72,14 @@ function parseGoldenText(text, allPrefixes) {
 }
 
 function parseGolden(goldenFile, srcPrefixes) {
-  if (!existsSync(goldenFile)) return { quads: null, error: 'no golden file' };
+  if (!existsSync(goldenFile)) {
+    return { quads: null, error: 'no golden file' };
+  }
 
   const text = readFileSync(goldenFile, 'utf8').trim();
-  if (!text) return { quads: [], error: null };
+  if (!text) {
+    return { quads: [], error: null };
+  }
 
   const allPrefixes = { ...KNOWN_PREFIXES, ...srcPrefixes };
   return parseGoldenText(text, allPrefixes);
@@ -96,7 +103,7 @@ async function runComunica(filepath) {
 
   const t0 = performance.now();
   const stream = await engine.queryQuads(src, {
-    sources: [store],
+    sources: [ store ],
     destination: store,
     queryFormat: { language: 'shacl', version: '1.2' },
     baseIRI: pathToFileURL(filepath).href,
@@ -117,8 +124,8 @@ function compareQuads(golden, comunica) {
   const goldKeys = new Set(golden.map(quadKey));
   const commKeys = new Set(comunica.map(quadKey));
 
-  const onlyGolden = [...goldKeys].filter(k => !commKeys.has(k));
-  const onlyComunica = [...commKeys].filter(k => !goldKeys.has(k));
+  const onlyGolden = [ ...goldKeys ].filter(k => !commKeys.has(k));
+  const onlyComunica = [ ...commKeys ].filter(k => !goldKeys.has(k));
 
   return {
     match: onlyGolden.length === 0 && onlyComunica.length === 0,
@@ -140,10 +147,10 @@ async function main() {
 
   console.log(`\n  Validating ${files.length} examples against golden output\n`);
 
-  const colW = [40, 10, 10, 10, 10, 14];
-  const hdr = ['Example', 'Golden', 'Got', 'Missing', 'Extra', 'Time'];
-  console.log('  ' + hdr.map((h, i) => i === 0 ? h.padEnd(colW[i]) : h.padStart(colW[i])).join(''));
-  console.log('  ' + '─'.repeat(colW.reduce((a, b) => a + b, 0)));
+  const colW = [ 40, 10, 10, 10, 10, 14 ];
+  const hdr = [ 'Example', 'Golden', 'Got', 'Missing', 'Extra', 'Time' ];
+  console.log(`  ${hdr.map((h, i) => i === 0 ? h.padEnd(colW[i]) : h.padStart(colW[i])).join('')}`);
+  console.log(`  ${'─'.repeat(colW.reduce((a, b) => a + b, 0))}`);
 
   let passed = 0;
   let failed = 0;
@@ -161,12 +168,16 @@ async function main() {
 
     if (golden.error) {
       parseErrors++;
-      if (verbose) console.log(`  ${file.padEnd(colW[0])}PARSE: ${golden.error.slice(0, 50)}`);
+      if (verbose) {
+        console.log(`  ${file.padEnd(colW[0])}PARSE: ${golden.error.slice(0, 50)}`);
+      }
       continue;
     }
     if (golden.quads === null) {
       skipped++;
-      if (verbose) console.log(`  ${file.padEnd(colW[0])}NO GOLDEN`);
+      if (verbose) {
+        console.log(`  ${file.padEnd(colW[0])}NO GOLDEN`);
+      }
       continue;
     }
 
@@ -190,10 +201,10 @@ async function main() {
         failed++;
         if (verbose) {
           for (const k of cmp.missingDetails.slice(0, 5)) {
-            console.log(`       missing: ${k.replace(/\x00/g, ' | ')}`);
+            console.log(`       missing: ${k.replaceAll('\0', ' | ')}`);
           }
           for (const k of cmp.extraDetails.slice(0, 5)) {
-            console.log(`       extra:   ${k.replace(/\x00/g, ' | ')}`);
+            console.log(`       extra:   ${k.replaceAll('\0', ' | ')}`);
           }
         }
       }

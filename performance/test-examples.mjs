@@ -7,10 +7,10 @@
  *   node performance/test-examples.mjs --filter deep-taxonomy
  */
 
-import { createRequire } from 'module';
-import { readFileSync, readdirSync, existsSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync, readdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -48,7 +48,7 @@ async function runExample(filename) {
   const store = RdfStore.createDefault();
 
   const stream = await engine.queryQuads(src, {
-    sources: [store],
+    sources: [ store ],
     destination: store,
     queryFormat: { language: 'shacl', version: '1.2' },
   });
@@ -71,8 +71,8 @@ async function main() {
   }
 
   console.log(`\n  Testing ${files.length} examples with Comunica SHACL Rules\n`);
-  console.log('  ' + 'Example'.padEnd(45) + 'Result'.padEnd(10) + 'Triples');
-  console.log('  ' + '-'.repeat(68));
+  console.log(`  ${'Example'.padEnd(45)}${'Result'.padEnd(10)}Triples`);
+  console.log(`  ${'-'.repeat(68)}`);
 
   let passed = 0;
   let failed = 0;

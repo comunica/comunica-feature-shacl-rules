@@ -93,7 +93,7 @@ describe('ActorQueryOperationShaclRule', () => {
         operation: {
           type: 'shaclRule',
           data: [],
-          rules: [{ input: { type: 'bgp', patterns: [p] }, template: [p] }],
+          rules: [{ input: { type: 'bgp', patterns: [ p ]}, template: [ p ]}],
         },
         context: new ActionContext(),
       };
@@ -202,7 +202,7 @@ describe('ActorQueryOperationShaclRule', () => {
         operation: {
           type: 'shaclRule',
           data: [],
-          rules: [{ input: { type: 'bgp', patterns: [bodyPat] }, template: [headPat] }],
+          rules: [{ input: { type: 'bgp', patterns: [ bodyPat ]}, template: [ headPat ]}],
         },
         context: new ActionContext(),
       };
@@ -445,7 +445,9 @@ RULE { :test :is true . } WHERE { ?X a :N2 . }`;
 
       const rules: any[] = [];
       for (const el of elements) {
-        if (el && el.type === 'shaclRule') rules.push(el);
+        if (el && el.type === 'shaclRule') {
+          rules.push(el);
+        }
       }
 
       expect(rules).toHaveLength(3);

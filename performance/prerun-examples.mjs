@@ -2,11 +2,11 @@
  * Pre-run all SHACL examples through the Comunica engine and save results as JSON.
  * Run from repo root: node performance/prerun-examples.mjs
  */
-import { createRequire } from 'module';
-import { readFileSync, readdirSync, writeFileSync, existsSync } from 'fs';
-import { join, dirname, basename, extname } from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
-import { performance } from 'perf_hooks';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { join, dirname } from 'node:path';
+import { performance } from 'node:perf_hooks';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -17,7 +17,7 @@ const { RdfStore } = require('rdf-stores');
 const examplesDir = join(__dirname, 'examples');
 const outputFile = join(examplesDir, 'results.json');
 
-const SKIP = new Set(['deep-taxonomy-100000.srl', 'deep-taxonomy-10000.srl', 'deep-taxonomy-1000.srl', 'deep-taxonomy-100.srl', 'deep-taxonomy-10.srl', 'sudoku.srl', 'turing.srl', 'gps.srl', 'fibonacci.srl', 'hanoi.srl', 'path-discovery.srl', 'fft32-numeric.srl']);
+const SKIP = new Set([ 'deep-taxonomy-100000.srl', 'deep-taxonomy-10000.srl', 'deep-taxonomy-1000.srl', 'deep-taxonomy-100.srl', 'deep-taxonomy-10.srl', 'sudoku.srl', 'turing.srl', 'gps.srl', 'fibonacci.srl', 'hanoi.srl', 'path-discovery.srl', 'fft32-numeric.srl' ]);
 
 const files = readdirSync(examplesDir)
   .filter(f => f.endsWith('.srl'))
@@ -37,7 +37,7 @@ for (const file of files) {
 
   try {
     const stream = await engine.queryQuads(src, {
-      sources: [store],
+      sources: [ store ],
       destination: store,
       queryFormat: { language: 'shacl', version: '1.2' },
       baseIRI: pathToFileURL(filepath).href,
@@ -51,7 +51,7 @@ for (const file of files) {
     });
 
     const ms = Math.round(performance.now() - t0);
-    results.push({ file, count: count, ms, error: null });
+    results.push({ file, count, ms, error: null });
     process.stdout.write(`  ✓ ${file.padEnd(45)} ${count} quads  ${ms} ms\n`);
   } catch (err) {
     const ms = Math.round(performance.now() - t0);

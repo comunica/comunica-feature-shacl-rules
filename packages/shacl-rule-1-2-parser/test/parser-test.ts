@@ -448,7 +448,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
     );
     const algebra = toShaclAlgebra(ast);
     expect(algebra).toHaveLength(1);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('bgp');
     expect(rule.input.patterns).toHaveLength(1);
@@ -461,7 +461,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('filter');
     expect(rule.input.input.type).toBe('bgp');
@@ -475,7 +475,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('extend');
     expect(rule.input.variable.value).toBe('km');
@@ -489,7 +489,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('minus');
   });
@@ -501,7 +501,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('filter');
     expect(rule.template).toHaveLength(1);
@@ -529,7 +529,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
     );
     const algebra = toShaclAlgebra(ast);
     expect(algebra).toHaveLength(1);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.type).toBe('bgp');
     expect(rule.input.patterns).toHaveLength(2);
@@ -554,7 +554,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.type).toBe('shaclRule');
     expect(rule.input.patterns).toHaveLength(1);
     expect(rule.template).toHaveLength(1);
@@ -578,7 +578,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
     expect(algebra).toHaveLength(2);
 
     // Rule 1: body ?Y :parent ?X → template ?X :child ?Y
-    const r1 = algebra[0] as any;
+    const r1 = algebra[0];
     expect(r1.type).toBe('shaclRule');
     expect(r1.input.patterns[0].subject.value).toBe('Y');
     expect(r1.input.patterns[0].predicate.value).toBe('http://example/parent');
@@ -588,7 +588,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
     expect(r1.template[0].object.value).toBe('Y');
 
     // Rule 2: body ?Y :child ?X → template ?X :parent ?Y
-    const r2 = algebra[1] as any;
+    const r2 = algebra[1];
     expect(r2.type).toBe('shaclRule');
     expect(r2.input.patterns[0].subject.value).toBe('Y');
     expect(r2.input.patterns[0].predicate.value).toBe('http://example/child');
@@ -605,7 +605,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.input.patterns[0].predicate.value).toBe('http://example.org/knows');
     expect(rule.input.patterns[1].predicate.value).toBe('http://example.org/knows');
     expect(rule.template[0].predicate.value).toBe('http://example.org/knows');
@@ -646,9 +646,9 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.template).toHaveLength(1);
-    const quad = rule.template[0] as any;
+    const quad = rule.template[0];
     expect(quad.termType).toBe('Quad');
     expect(quad.subject.value).toBe('x');
     expect(quad.predicate.value).toBe('http://example/adult');
@@ -661,7 +661,7 @@ describe('toShaclAlgebra — rule body algebra', () => {
       parseContext(),
     );
     const algebra = toShaclAlgebra(ast);
-    const rule = algebra[0] as any;
+    const rule = algebra[0];
     expect(rule.template[0].predicate.value).toBe('http://example.org/km');
     expect(rule.input.input.patterns[0].predicate.value).toBe('http://example.org/miles');
   });
