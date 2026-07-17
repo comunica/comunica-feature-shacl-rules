@@ -20,7 +20,7 @@
     <!-- Tabs -->
     <div class="tab-bar">
       <button class="tab-btn" :class="{ active: activeTab === 'editor' }" @click="switchTab('editor')">✏️ Editor</button>
-      <button class="tab-btn" :class="{ active: activeTab === 'examples' }" @click="switchTab('examples')">📋 Examples (62 tests)</button>
+      <button class="tab-btn" :class="{ active: activeTab === 'examples' }" @click="switchTab('examples')">📋 Examples ({{ exampleResults.length || 57 }} tests)</button>
       <button class="tab-btn" :class="{ active: activeTab === 'conformance' }" @click="switchTab('conformance')">🏛️ SHACL Conformance (166)</button>
     </div>
 

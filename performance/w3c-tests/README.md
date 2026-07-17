@@ -1,5 +1,7 @@
 # SHACL 1.2 Rules Tests
 
+
+
 ## Manifests
 
 Tests use the <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
@@ -25,7 +27,7 @@ Translate between SRL and RDF syntax forms.
 
 ### Well-formedness tests
 
-These are test for well-formedness conditions.
+These are test for well-formedness conditions. 
 All the test are syntactically legal, i.e. conform to the SHACL Rules grammar and any
 addition parsing rules.
 

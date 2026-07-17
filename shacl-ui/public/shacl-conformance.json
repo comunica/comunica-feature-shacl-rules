@@ -917,7 +917,7 @@
     "name": "syntax-rule-terms-bad-01.srl",
     "rawType": "RulesNegativeSyntaxTest",
     "status": "fail",
-    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+    "issue": "TEST BUG: spec grammar \u00a77.5 production [128] LANG_DIR explicitly allows -- in language tags (@en--LTR). This test expects rejection but the grammar says it is valid syntax."
   },
   {
     "cat": "syntax",
@@ -997,7 +997,7 @@
     "name": "syntax-data-bad-08.srl",
     "rawType": "RulesNegativeSyntaxTest",
     "status": "fail",
-    "issue": "Annotation shorthand {| |} and ~ reifier syntax. SRL grammar inherits SPARQL 1.2 TriplesSameSubject which includes this syntax, but the test suite expects rejection. Spec/test inconsistency."
+    "issue": "SPEC INCONSISTENCY: grammar \u00a77.5 production [34] includes AnnotationData (|{|}| and ~) in DATA blocks via SPARQL inheritance. Test expects rejection but grammar unambiguously permits it."
   },
   {
     "cat": "syntax",
@@ -1029,7 +1029,7 @@
     "name": "syntax-template-bad-01.srl",
     "rawType": "RulesNegativeSyntaxTest",
     "status": "fail",
-    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+    "issue": "TEST BUG: spec grammar \u00a77.5 production [128] LANG_DIR explicitly allows -- in language tags (@en--LTR). This test expects rejection but the grammar says it is valid syntax."
   },
   {
     "cat": "syntax",
@@ -1077,7 +1077,7 @@
     "name": "syntax-pattern-bad-01.srl",
     "rawType": "RulesNegativeSyntaxTest",
     "status": "fail",
-    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+    "issue": "TEST BUG: spec grammar \u00a77.5 production [128] LANG_DIR explicitly allows -- in language tags (@en--LTR). This test expects rejection but the grammar says it is valid syntax."
   },
   {
     "cat": "syntax",
