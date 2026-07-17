@@ -1,0 +1,1330 @@
+[
+  {
+    "cat": "syntax",
+    "file": "syntax-ruleset-structure-01.srl",
+    "name": "syntax-ruleset-structure-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-ruleset-structure-02.srl",
+    "name": "syntax-ruleset-structure-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-ruleset-structure-03.srl",
+    "name": "syntax-ruleset-structure-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-ruleset-structure-04.srl",
+    "name": "syntax-ruleset-structure-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-ruleset-structure-05.srl",
+    "name": "syntax-ruleset-structure-05.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-07.srl",
+    "name": "syntax-rule-terms-07.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-08.srl",
+    "name": "syntax-rule-terms-08.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-09.srl",
+    "name": "syntax-rule-terms-09.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-10.srl",
+    "name": "syntax-rule-terms-10.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-11.srl",
+    "name": "syntax-rule-terms-11.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-12.srl",
+    "name": "syntax-rule-terms-12.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-13.srl",
+    "name": "syntax-rule-terms-13.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-14.srl",
+    "name": "syntax-rule-terms-14.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-15.srl",
+    "name": "syntax-rule-terms-15.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-16.srl",
+    "name": "syntax-rule-terms-16.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-paths-01.srl",
+    "name": "syntax-rule-paths-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-paths-02.srl",
+    "name": "syntax-rule-paths-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-paths-03.srl",
+    "name": "syntax-rule-paths-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-filter-01.srl",
+    "name": "syntax-rule-elements-filter-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-filter-02.srl",
+    "name": "syntax-rule-elements-filter-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-filter-03.srl",
+    "name": "syntax-rule-elements-filter-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-not-01.srl",
+    "name": "syntax-rule-elements-not-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-not-02.srl",
+    "name": "syntax-rule-elements-not-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-not-03.srl",
+    "name": "syntax-rule-elements-not-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-elements-not-04.srl",
+    "name": "syntax-rule-elements-not-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-01.srl",
+    "name": "syntax-reification-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-02.srl",
+    "name": "syntax-reification-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-03.srl",
+    "name": "syntax-reification-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-04.srl",
+    "name": "syntax-reification-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-05.srl",
+    "name": "syntax-reification-05.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-06.srl",
+    "name": "syntax-reification-06.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-07.srl",
+    "name": "syntax-reification-07.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-reification-08.srl",
+    "name": "syntax-reification-08.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-01.srl",
+    "name": "syntax-data-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-02.srl",
+    "name": "syntax-data-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-03.srl",
+    "name": "syntax-data-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-04.srl",
+    "name": "syntax-data-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-05.srl",
+    "name": "syntax-data-05.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-06.srl",
+    "name": "syntax-data-06.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-07.srl",
+    "name": "syntax-data-07.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-08.srl",
+    "name": "syntax-data-08.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-09.srl",
+    "name": "syntax-data-09.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-10.srl",
+    "name": "syntax-data-10.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-11.srl",
+    "name": "syntax-data-11.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-12.srl",
+    "name": "syntax-data-12.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-13.srl",
+    "name": "syntax-data-13.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-14.srl",
+    "name": "syntax-data-14.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-15.srl",
+    "name": "syntax-data-15.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-16.srl",
+    "name": "syntax-data-16.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-17.srl",
+    "name": "syntax-data-17.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-18.srl",
+    "name": "syntax-data-18.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-19.srl",
+    "name": "syntax-data-19.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-20.srl",
+    "name": "syntax-data-20.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-21.srl",
+    "name": "syntax-data-21.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-01.srl",
+    "name": "syntax-template-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-02.srl",
+    "name": "syntax-template-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-03.srl",
+    "name": "syntax-template-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-04.srl",
+    "name": "syntax-template-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-05.srl",
+    "name": "syntax-template-05.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-06.srl",
+    "name": "syntax-template-06.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-07.srl",
+    "name": "syntax-template-07.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-08.srl",
+    "name": "syntax-template-08.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-09.srl",
+    "name": "syntax-template-09.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-10.srl",
+    "name": "syntax-template-10.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-11.srl",
+    "name": "syntax-template-11.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-12.srl",
+    "name": "syntax-template-12.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-13.srl",
+    "name": "syntax-template-13.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-14.srl",
+    "name": "syntax-template-14.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-15.srl",
+    "name": "syntax-template-15.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-16.srl",
+    "name": "syntax-template-16.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-17.srl",
+    "name": "syntax-template-17.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-18.srl",
+    "name": "syntax-template-18.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-19.srl",
+    "name": "syntax-template-19.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-20.srl",
+    "name": "syntax-template-20.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-21.srl",
+    "name": "syntax-template-21.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-22.srl",
+    "name": "syntax-template-22.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-23.srl",
+    "name": "syntax-template-23.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-24.srl",
+    "name": "syntax-template-24.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-25.srl",
+    "name": "syntax-template-25.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-26.srl",
+    "name": "syntax-template-26.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-27.srl",
+    "name": "syntax-template-27.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-01.srl",
+    "name": "syntax-pattern-01.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-02.srl",
+    "name": "syntax-pattern-02.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-03.srl",
+    "name": "syntax-pattern-03.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-04.srl",
+    "name": "syntax-pattern-04.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-05.srl",
+    "name": "syntax-pattern-05.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-06.srl",
+    "name": "syntax-pattern-06.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-07.srl",
+    "name": "syntax-pattern-07.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-08.srl",
+    "name": "syntax-pattern-08.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-09.srl",
+    "name": "syntax-pattern-09.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-10.srl",
+    "name": "syntax-pattern-10.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-11.srl",
+    "name": "syntax-pattern-11.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-12.srl",
+    "name": "syntax-pattern-12.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-13.srl",
+    "name": "syntax-pattern-13.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-14.srl",
+    "name": "syntax-pattern-14.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-15.srl",
+    "name": "syntax-pattern-15.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-16.srl",
+    "name": "syntax-pattern-16.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-17.srl",
+    "name": "syntax-pattern-17.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-18.srl",
+    "name": "syntax-pattern-18.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-19.srl",
+    "name": "syntax-pattern-19.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-20.srl",
+    "name": "syntax-pattern-20.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-21.srl",
+    "name": "syntax-pattern-21.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-22.srl",
+    "name": "syntax-pattern-22.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-23.srl",
+    "name": "syntax-pattern-23.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-24.srl",
+    "name": "syntax-pattern-24.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-25.srl",
+    "name": "syntax-pattern-25.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-26.srl",
+    "name": "syntax-pattern-26.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-27.srl",
+    "name": "syntax-pattern-27.srl",
+    "rawType": "RulesPositiveSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-01.srl",
+    "name": "syntax-rule-bad-01.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-02.srl",
+    "name": "syntax-rule-bad-02.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-03.srl",
+    "name": "syntax-rule-bad-03.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-04.srl",
+    "name": "syntax-rule-bad-04.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-05.srl",
+    "name": "syntax-rule-bad-05.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-bad-06.srl",
+    "name": "syntax-rule-bad-06.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-bad-01.srl",
+    "name": "syntax-rule-terms-bad-01.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "fail",
+    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-bad-02.srl",
+    "name": "syntax-rule-terms-bad-02.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-rule-terms-bad-03.srl",
+    "name": "syntax-rule-terms-bad-03.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-01.srl",
+    "name": "syntax-data-bad-01.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-02.srl",
+    "name": "syntax-data-bad-02.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-03.srl",
+    "name": "syntax-data-bad-03.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-04.srl",
+    "name": "syntax-data-bad-04.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-05.srl",
+    "name": "syntax-data-bad-05.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-06.srl",
+    "name": "syntax-data-bad-06.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-07.srl",
+    "name": "syntax-data-bad-07.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-08.srl",
+    "name": "syntax-data-bad-08.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "fail",
+    "issue": "Annotation shorthand {| |} and ~ reifier syntax. SRL grammar inherits SPARQL 1.2 TriplesSameSubject which includes this syntax, but the test suite expects rejection. Spec/test inconsistency."
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-09.srl",
+    "name": "syntax-data-bad-09.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-10.srl",
+    "name": "syntax-data-bad-10.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-data-bad-11.srl",
+    "name": "syntax-data-bad-11.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-01.srl",
+    "name": "syntax-template-bad-01.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "fail",
+    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-02.srl",
+    "name": "syntax-template-bad-02.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-03.srl",
+    "name": "syntax-template-bad-03.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-04.srl",
+    "name": "syntax-template-bad-04.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-05.srl",
+    "name": "syntax-template-bad-05.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-template-bad-06.srl",
+    "name": "syntax-template-bad-06.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-bad-01.srl",
+    "name": "syntax-pattern-bad-01.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "fail",
+    "issue": "SRL grammar LANGTAG regex (§7.6): @[a-zA-Z]+(-[a-zA-Z0-9]+)* does not match @en--LTR because -- is not a valid subtag start. Traqula uses a LANG_DIR token that specifically matches directional tags — our parser inherits this broader token."
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-bad-02.srl",
+    "name": "syntax-pattern-bad-02.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-bad-03.srl",
+    "name": "syntax-pattern-bad-03.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "syntax",
+    "file": "syntax-pattern-bad-04.srl",
+    "name": "syntax-pattern-bad-04.srl",
+    "rawType": "RulesNegativeSyntaxTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-01.srl",
+    "name": "wellformed-01.srl",
+    "rawType": "RulesPositiveWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-02.srl",
+    "name": "wellformed-02.srl",
+    "rawType": "RulesPositiveWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-03.srl",
+    "name": "wellformed-03.srl",
+    "rawType": "RulesPositiveWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-04.srl",
+    "name": "wellformed-04.srl",
+    "rawType": "RulesPositiveWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-bad-01.srl",
+    "name": "wellformed-bad-01.srl",
+    "rawType": "RulesNegativeWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-bad-02.srl",
+    "name": "wellformed-bad-02.srl",
+    "rawType": "RulesNegativeWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-bad-03.srl",
+    "name": "wellformed-bad-03.srl",
+    "rawType": "RulesNegativeWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "wellformed",
+    "file": "wellformed-bad-04.srl",
+    "name": "wellformed-bad-04.srl",
+    "rawType": "RulesNegativeWellFormednessTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-01.srl",
+    "name": "stratification-01.srl",
+    "rawType": "RulesPositiveStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-02.srl",
+    "name": "stratification-02.srl",
+    "rawType": "RulesPositiveStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-03.srl",
+    "name": "stratification-03.srl",
+    "rawType": "RulesPositiveStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-04.srl",
+    "name": "stratification-04.srl",
+    "rawType": "RulesPositiveStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-05.srl",
+    "name": "stratification-05.srl",
+    "rawType": "RulesPositiveStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-bad-01.srl",
+    "name": "stratification-bad-01.srl",
+    "rawType": "RulesNegativeStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-bad-02.srl",
+    "name": "stratification-bad-02.srl",
+    "rawType": "RulesNegativeStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-bad-03.srl",
+    "name": "stratification-bad-03.srl",
+    "rawType": "RulesNegativeStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "stratification",
+    "file": "stratification-bad-04.srl",
+    "name": "stratification-bad-04.srl",
+    "rawType": "RulesNegativeStratificationTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "eval-basic-01.srl",
+    "name": "Eval-basic-01",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "eval-basic-02.srl",
+    "name": "Eval-basic-02",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "eval-data-01.srl",
+    "name": "Eval-data-01",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "eval-data-02.srl",
+    "name": "Eval-data-02",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "eval-negation-01.srl",
+    "name": "Eval-negation-01",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-subclassof-1",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-subproperty-1",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-domain-1",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-domain-2",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-range-1",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  },
+  {
+    "cat": "eval",
+    "file": "rdfs.srl",
+    "name": "Eval-rdfs-range-2",
+    "rawType": "RulesEvalTest",
+    "status": "pass",
+    "issue": null
+  }
+]

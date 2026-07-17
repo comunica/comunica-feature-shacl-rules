@@ -46,6 +46,7 @@ createApp({
         passed: results.filter(e => e.status === 'pass').length,
         failed: results.filter(e => e.status === 'fail').length,
         errors: results.filter(e => e.status === 'error').length,
+        skipped: results.filter(e => e.status === 'skipped').length,
       };
     });
 
@@ -63,7 +64,12 @@ createApp({
         const current = exampleResults.value.find(e => e.status === 'running');
         return 'Running: ' + (current ? current.name : '...');
       }
-      return s.passed + '/' + s.total + ' passed' + (s.failed > 0 ? ', ' + s.failed + ' failed' : '') + (s.errors > 0 ? ', ' + s.errors + ' errors' : '');
+      const parts = [];
+      if (s.passed > 0) parts.push(s.passed + ' passed');
+      if (s.failed > 0) parts.push(s.failed + ' failed');
+      if (s.errors > 0) parts.push(s.errors + ' errors');
+      if (s.skipped > 0) parts.push(s.skipped + ' skipped');
+      return parts.join(', ') || 'No results';
     });
 
     async function loadExamplesDashboard() {
@@ -78,6 +84,7 @@ createApp({
         exampleRegistry.value = reg;
         exampleResults.value = reg.map(ex => {
           const pr = prerunMap[ex.file];
+          if (ex.expectedError) return { ...ex, status: 'skipped', count: -1, ms: -1, error: null };
           if (pr && pr.error) return { ...ex, status: 'error', count: -1, ms: pr.ms || -1, error: pr.error };
           if (pr && !pr.error) {
             const match = ex.goldenCount >= 0 ? pr.count === ex.goldenCount : null;
@@ -192,15 +199,26 @@ createApp({
     const examplesBtn  = ref(null);
 
     // --- URL state ---
-    function encodeURLComponent(s) {
-      return encodeURIComponent(s).replace(/\(/g, '%28').replace(/\)/g, '%29');
+    function switchTab(tab) {
+      activeTab.value = tab;
+      const routes = { editor: '/editor', examples: '/examples-tests', conformance: '/shacl-conformance-tests' };
+      const newHash = '#' + routes[tab];
+      if (location.hash !== newHash) history.pushState(null, null, newHash);
+      if (tab === 'examples') loadExamplesDashboard();
+      if (tab === 'conformance') loadShaclConformance();
     }
 
     function loadStateFromUrl() {
-      let hash = location.hash;
-      if (!hash && location.search && !location.search.includes('&state')) {
-        hash = location.search.replace(/\+/g, '%20');
-        history.replaceState(null, null, window.location.href.replace('?', '#').replace(/\+/g, '%20'));
+      const hash = location.hash;
+      // Tab routing
+      if (hash === '#/examples-tests') activeTab.value = 'examples';
+      else if (hash === '#/shacl-conformance-tests') activeTab.value = 'conformance';
+      else activeTab.value = 'editor';
+
+      // Legacy query/data state
+      let legacyState = hash.startsWith('#query=') || hash.startsWith('#data=');
+      if (!legacyState && !hash.startsWith('#/')) {
+        // old-style: /# query=...   data=... without route prefix
       }
       const state = hash.slice(1).split('&').reduce((acc, item) => {
         const kv = item.match(/^([^=]+)=(.*)/);
@@ -212,17 +230,26 @@ createApp({
     }
 
     function saveStateToUrl() {
+      if (activeTab.value !== 'editor') return; // only save editor state on editor tab
+      const routes = { editor: '/editor', examples: '/examples-tests', conformance: '/shacl-conformance-tests' };
+      let hash = '#' + routes[activeTab.value];
       const parts = [];
-      parts.push('query=' + encodeURLComponent(shaclQuery.value));
-      if (turtleData.value) parts.push('data=' + encodeURLComponent(turtleData.value));
-      const qs = '#' + parts.join('&');
-      history.replaceState(null, null, location.href.replace(/(?:#.*)?$/, qs));
+      const encodedQuery = encodeURIComponent(shaclQuery.value).replace(/\(/g, '%28').replace(/\)/g, '%29');
+      parts.push('query=' + encodedQuery);
+      if (turtleData.value) {
+        const encodedData = encodeURIComponent(turtleData.value).replace(/\(/g, '%28').replace(/\)/g, '%29');
+        parts.push('data=' + encodedData);
+      }
+      hash += '&' + parts.join('&');
+      history.replaceState(null, null, hash);
     }
 
     onMounted(async () => {
-      // Load URL state before fetching examples
       loadStateFromUrl();
       window.addEventListener('popstate', loadStateFromUrl);
+
+      if (activeTab.value === 'examples') loadExamplesDashboard();
+      if (activeTab.value === 'conformance') loadShaclConformance();
 
       try {
         const res = await fetch('./examples/index.json');
@@ -477,6 +504,7 @@ createApp({
       exampleStatusClass, exampleStatusText, exampleStats,
       loadExamplesDashboard, runAllExamples, runExample, openExampleInEditor,
       loadShaclConformance, shaclConfResults, shaclConfStats, shaclConfStatusClass, shaclConfStatusText, openConfTest,
+      switchTab,
     };
   },
 }).mount('#app');

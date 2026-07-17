@@ -96,7 +96,7 @@
   },
   {
     "file": "dijkstra.srl",
-    "count": 14,
+    "count": 46,
     "error": null
   },
   {
@@ -126,7 +126,7 @@
   },
   {
     "file": "fibonacci.srl",
-    "count": 60,
+    "count": 99,
     "error": null
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "file": "hanoi.srl",
-    "count": -1,
+    "count": 81,
     "error": null
   },
   {
@@ -186,7 +186,7 @@
   },
   {
     "file": "path-discovery.srl",
-    "count": -1,
+    "count": 98421,
     "error": null
   },
   {
@@ -241,7 +241,7 @@
   },
   {
     "file": "spec-2-5-assignment-with-negation.srl",
-    "count": 1,
+    "count": 4,
     "error": null
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "file": "turing.srl",
-    "count": 500,
+    "count": 567,
     "error": null
   },
   {
