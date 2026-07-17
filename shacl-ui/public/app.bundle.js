@@ -16706,7 +16706,7 @@ Ps({
           for (const W of $) V[W.file] = W;
           k.value = O, _.value = O.map((W) => {
             const K = V[W.file];
-            if (W.expectedError) return { ...W, status: "skipped", count: -1, ms: -1, error: null };
+            if (W.expectedError && !(K && K.error)) return { ...W, status: "skipped", count: -1, ms: -1, error: null };
             if (K && K.error) return { ...W, status: "error", count: -1, ms: K.ms || -1, error: K.error };
             if (K && !K.error) {
               const J = W.goldenCount >= 0 ? K.count === W.goldenCount : null;

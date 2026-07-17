@@ -267,7 +267,7 @@
   {
     "file": "sudoku.srl",
     "count": -1,
-    "error": "function evaluator not configured for math ops"
+    "error": "No function evaluator for custom IRI :sudoku"
   },
   {
     "file": "turing.srl",

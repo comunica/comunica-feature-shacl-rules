@@ -84,7 +84,7 @@ createApp({
         exampleRegistry.value = reg;
         exampleResults.value = reg.map(ex => {
           const pr = prerunMap[ex.file];
-          if (ex.expectedError) return { ...ex, status: 'skipped', count: -1, ms: -1, error: null };
+          if (ex.expectedError && !(pr && pr.error)) return { ...ex, status: 'skipped', count: -1, ms: -1, error: null };
           if (pr && pr.error) return { ...ex, status: 'error', count: -1, ms: pr.ms || -1, error: pr.error };
           if (pr && !pr.error) {
             const match = ex.goldenCount >= 0 ? pr.count === ex.goldenCount : null;

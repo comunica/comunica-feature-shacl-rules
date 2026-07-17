@@ -274,7 +274,7 @@
     "file": "sudoku.srl",
     "goldenCount": -1,
     "expectedError": true,
-    "issue": "Math operations (+, *, -, /) require Comunica function evaluator not yet configured"
+    "issue": "Custom predicate call :sudoku(?puzzle) in SET expression. Eyeleng resolves it via backward reasoning; Comunica has no function evaluator for custom IRIs."
   },
   {
     "name": "Turing",
