@@ -21,6 +21,7 @@
     <div class="tab-bar">
       <button class="tab-btn" :class="{ active: activeTab === 'editor' }" @click="activeTab = 'editor'">✏️ Editor</button>
       <button class="tab-btn" :class="{ active: activeTab === 'examples' }" @click="activeTab = 'examples'; loadExamplesDashboard()">📋 Examples (62 tests)</button>
+      <button class="tab-btn" :class="{ active: activeTab === 'conformance' }" @click="activeTab = 'conformance'; loadShaclConformance()">🏛️ SHACL Conformance (166)</button>
     </div>
 
     <!-- Editor panel -->
@@ -116,8 +117,8 @@
         <table>
           <thead><tr><th>Example</th><th style="width:80px">Status</th><th style="width:70px">Triples</th><th style="width:80px">Time</th><th style="width:70px"></th></tr></thead>
           <tbody>
-             <tr v-for="ex in exampleResults" :key="ex.file" :class="{ 'ex-pass': ex.status === 'pass', 'ex-fail': ex.status === 'fail', 'ex-err': ex.status === 'error', 'ex-run': ex.status === 'running' }" @click="openExampleInEditor(ex)" style="cursor:pointer" :title="'Click to open ' + ex.file + ' in editor'">
-               <td><div class="ex-name">{{ ex.name }}</div><div class="ex-file">{{ ex.file }}</div><div class="ex-issue" v-if="ex.issue && (ex.status === 'fail' || ex.status === 'error')">{{ ex.issue }}</div></td>
+            <tr v-for="ex in exampleResults" :key="ex.file" :class="{ 'ex-pass': ex.status === 'pass', 'ex-fail': ex.status === 'fail', 'ex-err': ex.status === 'error', 'ex-run': ex.status === 'running' }" @click="openExampleInEditor(ex)" style="cursor:pointer" :title="'Click to open ' + ex.file + ' in editor'">
+              <td><div class="ex-name">{{ ex.name }}</div><div class="ex-file">{{ ex.file }}</div><div class="ex-issue" v-if="ex.issue && (ex.status === 'fail' || ex.status === 'error')">{{ ex.issue }}</div></td>
               <td>
                 <span v-if="ex.status === 'pass'" class="badge badge-pass">✓ PASS</span>
                 <span v-else-if="ex.status === 'fail'" class="badge badge-fail">✗ FAIL</span>
@@ -127,6 +128,35 @@
               <td>{{ ex.count >= 0 ? ex.count : '' }}</td>
               <td>{{ ex.ms >= 0 ? ex.ms + ' ms' : '' }}</td>
               <td><button class="btn-examples btn-small" :disabled="ex.status === 'running'" @click="runExample(ex)">↻</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- W3C Conformance Dashboard -->
+  <div class="examples-dash" v-if="activeTab === 'conformance'">
+    <div class="panel panel-top" style="flex:1;min-height:0">
+      <div class="panel-header">
+        <span class="panel-title">SHACL 1.2 Rules Conformance Tests</span>
+        <span class="status" :class="shaclConfStatusClass">{{ shaclConfStatusText }}</span>
+      </div>
+      <div class="results-scroll" :style="{ flex: 1, minHeight: 0 }">
+        <table>
+          <thead><tr><th style="width:50px">Category</th><th>Test</th><th style="width:80px">Status</th><th style="width:180px">Type</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr v-for="t in shaclConfResults" :key="t.file" :class="{ 'ex-pass': t.status === 'pass', 'ex-fail': t.status === 'fail', 'ex-skip': t.status === 'skipped' }" @click="openConfTest(t)" style="cursor:pointer" :title="'Click to open in editor'">
+              <td><span class="w3c-cat">{{ t.cat }}</span></td>
+              <td><div class="ex-name">{{ t.name }}</div><div class="ex-file">{{ t.file }}</div></td>
+              <td>
+                <span v-if="t.status === 'pass'" class="badge badge-pass">✓ PASS</span>
+                <span v-else-if="t.status === 'fail'" class="badge badge-fail">✗ FAIL</span>
+                <span v-else-if="t.status === 'skipped'" class="badge badge-err">— SKIP</span>
+                <span v-else class="badge">⏳</span>
+              </td>
+              <td><span style="font-size:.7rem;color:#5a6a7a">{{ t.rawType }}</span></td>
+              <td><div class="ex-issue" v-if="t.issue">{{ t.issue }}</div></td>
             </tr>
           </tbody>
         </table>

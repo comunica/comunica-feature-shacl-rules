@@ -73,7 +73,7 @@ describe('ActorQueryOperationShaclRule', () => {
       const output = getSafeQuads(await actor.run(op, undefined));
 
       expect(output.type).toBe('quads');
-      await expect(arrayifyStream(output.quadStream)).resolves.toEqual([]);
+      await expect(arrayifyStream(output.quadStream)).resolves.toEqual([ dataQuad ]);
       expect(mediatorUpdateQuads.mediate).toHaveBeenCalledTimes(1);
       expect(mediatorQueryOperation.mediate).not.toHaveBeenCalled();
     });

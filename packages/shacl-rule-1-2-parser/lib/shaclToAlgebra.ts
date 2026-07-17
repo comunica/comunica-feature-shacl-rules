@@ -59,7 +59,10 @@ export const translateShaclRule: AlgebraIndir<'translateShaclRule', ShaclRule, [
     const patternAlgebra = SUBRULE(origTranslateGraphPattern, ruleAst.body);
     const flattenedTriples: any[] = [];
 
-    SUBRULE(origTranslateBasicGraphPattern, ruleAst.head.triples, flattenedTriples);
+    const headTriples = ruleAst.head.triples;
+    if (headTriples && headTriples !== (null as any) && typeof headTriples[Symbol.iterator] === 'function') {
+      SUBRULE(origTranslateBasicGraphPattern, headTriples, flattenedTriples);
+    }
     const templatePatterns = flattenedTriples.map(triple => SUBRULE(origTranslateQuad, triple));
 
     return {

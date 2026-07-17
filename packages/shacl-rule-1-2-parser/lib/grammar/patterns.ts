@@ -27,10 +27,13 @@ export const shaclSet: T11.SparqlGrammarRule<'shaclSet', any> = {
 
 export const bodyPattern: T12.SparqlGrammarRule<'bodyPattern', ShaclBodyNode> = {
   name: 'bodyPattern',
-  impl: ({ CONSUME, SUBRULE, ACTION }) => (C) => {
+  impl: ({ CONSUME, CONSUME2, SUBRULE, OPTION, ACTION }) => (C) => {
     const start = CONSUME(T11.lex.symbols.LCurly);
-    const patterns: T12.Pattern[] = SUBRULE(bodyPattern1);
-    const end = CONSUME(T11.lex.symbols.RCurly);
+    let patterns: T12.Pattern[] = [];
+    OPTION(() => {
+      patterns = SUBRULE(bodyPattern1);
+    });
+    const end = CONSUME2(T11.lex.symbols.RCurly);
     return ACTION(() => ({
       type: 'shaclBody',
       patterns,
@@ -93,7 +96,7 @@ export const negation: T12.SparqlGrammarRule<'negation', T12.PatternMinus> = {
 
 export const bodyBasic: T12.SparqlGrammarRule<'bodyBasic', T12.Pattern[]> = {
   name: 'bodyBasic',
-  impl: ({ OPTION, OPTION2, MANY, SUBRULE, SUBRULE2, SUBRULE3, SUBRULE4, SUBRULE5, SUBRULE6, OR, ACTION }) => () => {
+  impl: ({ OPTION, OPTION2, MANY, SUBRULE, SUBRULE2, SUBRULE3, SUBRULE5, OR, ACTION }) => () => {
     const elements: T12.Pattern[] = [];
 
     OPTION(() => {

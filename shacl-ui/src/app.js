@@ -160,6 +160,32 @@ createApp({
       document.addEventListener('mouseup', onUp);
     }
 
+    // --- W3C Conformance Dashboard ---
+    const shaclConfResults = ref([]);
+    const shaclConfStats = computed(() => {
+      const r = shaclConfResults.value;
+      return { total: r.length, passed: r.filter(t => t.status === 'pass').length, failed: r.filter(t => t.status === 'fail').length, skipped: r.filter(t => t.status === 'skipped').length };
+    });
+    const shaclConfStatusClass = computed(() => (shaclConfStats.value.failed > 0 ? 'error' : shaclConfStats.value.passed > 0 ? 'done' : ''));
+    const shaclConfStatusText = computed(() => {
+      const s = shaclConfStats.value;
+      return s.total > 0 ? s.passed + '/' + s.total + ' passed' + (s.failed > 0 ? ', ' + s.failed + ' failed' : '') + (s.skipped > 0 ? ', ' + s.skipped + ' skipped' : '') : '';
+    });
+    async function loadShaclConformance() {
+      if (shaclConfResults.value.length > 0) return;
+      try { shaclConfResults.value = await (await fetch('shacl-conformance.json')).json(); } catch(e) { /* ignore */ }
+    }
+    async function openConfTest(t) {
+      try {
+        const resp = await fetch(`w3c-tests/${t.cat}/${t.file}`);
+        if (!resp.ok) return;
+        shaclQuery.value = await resp.text();
+        turtleData.value = '';
+        clearResults();
+        activeTab.value = 'editor';
+      } catch(e) { /* ignore */ }
+    }
+
     // --- Examples dropdown ---
     const examples     = ref([]);
     const showExamples = ref(false);
@@ -450,6 +476,7 @@ createApp({
       activeTab, exampleResults, exampleRunning, exampleResultsHeight,
       exampleStatusClass, exampleStatusText, exampleStats,
       loadExamplesDashboard, runAllExamples, runExample, openExampleInEditor,
+      loadShaclConformance, shaclConfResults, shaclConfStats, shaclConfStatusClass, shaclConfStatusText, openConfTest,
     };
   },
 }).mount('#app');

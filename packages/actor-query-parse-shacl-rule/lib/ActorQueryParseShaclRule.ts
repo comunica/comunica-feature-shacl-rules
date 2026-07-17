@@ -66,8 +66,8 @@ export class ActorQueryParseShaclRule extends ActorQueryParse<undefined> {
       }
     }
 
-    if (rules.length === 0) {
-      throw new Error('No SHACL rule found in input');
+    if (rules.length === 0 && data.length === 0) {
+      throw new Error('No SHACL rule or DATA found in input');
     }
 
     return {

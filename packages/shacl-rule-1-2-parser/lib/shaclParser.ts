@@ -164,6 +164,26 @@ export class ShaclParser {
 
   public parse(input: string, context: SparqlContext): RuleOrDataBlockType {
     this.input = input;
-    return this.parser.shaclRuleSet(input, context);
+    const ast = this.parser.shaclRuleSet(input, context);
+    validateAst(ast);
+    return ast;
+  }
+}
+
+function validateAst(ast: RuleOrDataBlockType) {
+  for (const el of ast.elements) {
+    if (el.type === 'shaclData') {
+      validateDataBlock(el);
+    }
+  }
+}
+
+function validateDataBlock(dataNode: any) {
+  const triples = dataNode.triples;
+  if (!triples?.triples) return;
+  for (const t of triples.triples) {
+    if (t.subject?.subType === 'variable') throw new Error('Variables are not allowed in DATA block triples');
+    if (t.predicate?.subType === 'variable') throw new Error('Variables are not allowed in DATA block triples');
+    if (t.object?.subType === 'variable') throw new Error('Variables are not allowed in DATA block triples');
   }
 }

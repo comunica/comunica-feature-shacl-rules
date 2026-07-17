@@ -358,8 +358,8 @@ export class ActorQueryOperationShaclRule extends ActorQueryOperationTypedMediat
     if (doc.rules.length === 0) {
       return {
         type: 'quads',
-        quadStream: new ArrayIterator<RDF.Quad>([], { autoStart: false }),
-        metadata: async() => ({ cardinality: { type: 'estimate', value: 0 }}) as any,
+        quadStream: new ArrayIterator<RDF.Quad>(doc.data, { autoStart: false }),
+        metadata: async() => ({ cardinality: { type: 'estimate', value: doc.data.length }}) as any,
       };
     }
 
@@ -368,8 +368,8 @@ export class ActorQueryOperationShaclRule extends ActorQueryOperationTypedMediat
     const layers = stratifyLayers(doc.rules.length, components, edges);
     const recursiveFlags = computeRecursiveLayerFlags(layers, edges);
 
-    const allNewQuads: RDF.Quad[] = [];
-    let totalCardinality = 0;
+    const allNewQuads: RDF.Quad[] = [ ...doc.data ];
+    let totalCardinality = doc.data.length;
 
     for (let layerIdx = 0; layerIdx < layers.length; layerIdx++) {
       const layer = layers[layerIdx];

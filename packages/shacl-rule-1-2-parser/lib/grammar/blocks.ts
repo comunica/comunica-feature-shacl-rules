@@ -130,13 +130,16 @@ export const shaclDataBlock: T11.SparqlGrammarRule<'shaclDataBlock', ShaclDataNo
 
 export const triplesTemplateBlock: T11.SparqlGrammarRule<'triplesTemplateBlock', TriplesTemplateBlock> = {
   name: 'triplesTemplateBlock',
-  impl: ({ CONSUME, SUBRULE, ACTION }) => (C) => {
+  impl: ({ CONSUME, CONSUME2, SUBRULE, OPTION, ACTION }) => (C) => {
     const startToken = CONSUME(T11.lex.symbols.LCurly);
-    const triples = SUBRULE(originalTriplesTemplate);
-    const endToken = CONSUME(T11.lex.symbols.RCurly);
+    let triples: T12.PatternBgp | null = null;
+    OPTION(() => {
+      triples = SUBRULE(originalTriplesTemplate);
+    });
+    const endToken = CONSUME2(T11.lex.symbols.RCurly);
     return ACTION(() => ({
       type: 'TriplesTemplateBlock',
-      triples,
+      triples: triples || { type: 'bgp' as any, patterns: [] } as any,
       loc: C.astFactory.sourceLocation(startToken, endToken),
     }));
   },
