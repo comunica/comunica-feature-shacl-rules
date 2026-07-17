@@ -3,7 +3,7 @@ import { getSafeQuads } from '@comunica/utils-query-operation';
 import arrayifyStream from 'arrayify-stream';
 import { ArrayIterator } from 'asynciterator';
 import { Store, DataFactory } from 'n3';
-import { ActorQueryOperationShaclRule } from '../lib/ActorQueryOperationShaclRule';
+import { ActorQueryOperationShaclRule } from '../lib';
 import '@comunica/utils-jest';
 
 const DF = DataFactory;
